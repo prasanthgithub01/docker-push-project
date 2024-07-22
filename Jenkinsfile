@@ -2,14 +2,29 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials') // Replace with your Docker Hub credentials ID
-        DOCKER_IMAGE = "prasanthmeduri/sample-java-hello-world" // Replace with your Docker Hub username
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
+        DOCKER_IMAGE = "pipeline {
+    agent any
+
+    environment {
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials-id')
+        DOCKER_IMAGE = "prasanthmeduri/sample-java-hello-world"
+    }
+
+    tools {
+        maven 'Maven'
+        jdk 'Java 8'
     }
 
     stages {
         stage('Checkout SCM') {
             steps {
-                git 'https://github.com/prasanthgithub01/docker-push-project.git' // Replace with your GitHub repository URL
+                git 'https://github.com/prasanthgithub01/docker-push-project.git'
+            }
+        }
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn clean package'
             }
         }
         stage('Build Docker Image') {
