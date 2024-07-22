@@ -1,5 +1,4 @@
-FROM openjdk:8-jdk-alpine
-COPY HelloWorld.java /usr/src/myapp/
+FROM openjdk:8-jre-alpine
+COPY target/hello-world-1.0-SNAPSHOT-jar-with-dependencies.jar /usr/src/myapp/app.jar
 WORKDIR /usr/src/myapp
-RUN javac HelloWorld.java
-CMD ["java", "HelloWorld"]
+CMD ["java", "-jar", "app.jar"]
