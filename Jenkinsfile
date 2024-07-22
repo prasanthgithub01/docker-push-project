@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials-id') // Replace with your Docker Hub credentials ID
-        DOCKER_IMAGE = "your-dockerhub-username/sample-java-hello-world" // Replace with your Docker Hub username
+        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials') // Replace with your Docker Hub credentials ID
+        DOCKER_IMAGE = "prasanthmeduri/sample-java-hello-world" // Replace with your Docker Hub username
     }
 
     stages {
         stage('Checkout SCM') {
             steps {
-                git 'https://github.com/your-repo/sample-java-hello-world.git' // Replace with your GitHub repository URL
+                git 'https://github.com/prasanthgithub01/docker-push-project.git' // Replace with your GitHub repository URL
             }
         }
         stage('Build Docker Image') {
